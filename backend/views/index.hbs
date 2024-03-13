@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+
+<body>
+
+  <nav>
+    <h4>Contacts App</h4>
+    <ul>
+      <li><a href="/">Home</a></li>
+      {{#if user}}
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/auth/logout">Logout</a></li>
+      {{else}}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+      {{/if}}
+    </ul>
+
+  </nav>
+
+  {{!-- add a for loop here --}}
+
+  <div class="container">
+    <h1>All Contacts</h1>
+    <div class="row">
+      {{#each results}}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{this.first_name}} {{this.last_name}}</h5>
+            <p class="card-text">{{this.email}}</p>
+            <p class="card-text">{{this.phone_number_1}}</p>
+            <p class="card-text">{{this.phone_number_2}}</p>
+            <p class="card-text">{{this.address}}</p>
+               {{#if user}}
+                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                        {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      <div class="col-md-4 mb-3">
+    <div class="card">
+        <div class="card-body text-center"> <!-- Added text-center class -->
+            <a href="/add">
+            <button class="btn btn-success">Add</button> <!-- Corrected class name and added text-center class -->
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
